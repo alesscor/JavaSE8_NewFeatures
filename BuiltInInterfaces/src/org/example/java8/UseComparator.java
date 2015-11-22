@@ -25,7 +25,7 @@ public class UseComparator {
 		
 		//Case-insensitive sort with an anonymous class
 		Collections.sort(strings, (String str1, String str2) -> {
-				return str1.compareToIgnoreCase(str2);
+			return str1.compareToIgnoreCase(str2);
 		});
 		System.out.println("Sort with case-insensitive comparator");
 		for(String str: strings){
