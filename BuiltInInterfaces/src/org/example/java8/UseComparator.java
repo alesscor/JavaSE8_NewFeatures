@@ -18,19 +18,16 @@ public class UseComparator {
  
 		//Simple case-sensitive sort operation
 		Collections.sort(strings);
-		System.out.println("Simple sort");
+		System.out.println("Simple case-sensitive sort operation");
 		for(String str: strings){
 			System.out.println(str);
 		}
 		
 		//Case-insensitive sort with an anonymous class
-		Collections.sort(strings, new Comparator<String>() {
-			@Override
-			public int compare(String str1, String str2) {
+		Collections.sort(strings, (String str1, String str2) -> {
 				return str1.compareToIgnoreCase(str2);
-			}
 		});
-		System.out.println("Sort with comparator");
+		System.out.println("Sort with case-insensitive comparator");
 		for(String str: strings){
 			System.out.println(str);
 		}
