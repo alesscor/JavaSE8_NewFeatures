@@ -1,7 +1,12 @@
 package com.example.javase8;
 
 import com.example.javase8.interfaces.InterfaceWithArgs;
-
+/**
+ * Modifications from the course "Java SE 8 New Features" by David Gassner, 
+ * only to make it more interesting
+ * @author Alessandro
+ *
+ */
 public class UseInterfaceWithArgs {
 
 	public static void main(String[] args) {
