@@ -18,7 +18,7 @@ Java SE 8 New Features, lynda.com course with David Gassner:
     * It allows to use anonymous classes and methods
         * It makes less code and improves its readability and maintainability
     * Using the new Functional Interfaces that come in collection super interfaces, like the case of `Iterator` "superinterface" used by `Iterable` and its `Consumer` Funcional Interface with method `accept`, whose purpose is to operate items present in the collection. It's used in the `forEach` method to traverse a collection, for example
-`strings .forEach((str) -> System.out.println(str));`
+`strings.forEach((str) -> System.out.println(str));`
     * Presenting the "predicate interface" which has a `test()` method that returns boolean. You won't need to write return keyword if use the single line implementation.
     * Review package `java.util.function`, because there is a lot of new useful interfaces there.
 
