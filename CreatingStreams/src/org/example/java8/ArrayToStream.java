@@ -1,5 +1,6 @@
 package org.example.java8;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.example.java8.model.Person;
@@ -15,9 +16,13 @@ public class ArrayToStream {
 //		for (int i = 0; i < people.length; i++) {
 //			System.out.println(people[i].getInfo());
 //		}
-		Stream<Person> stream=Stream.of(people);
-		stream.forEach(p -> System.out.println(p.getInfo()));
-
+//	version using Stream interface		
+//		Stream<Person> stream=Stream.of(people);
+//		stream.forEach(p -> System.out.println(p.getInfo()));
+//	version using Arrays interface
+//		Stream<Person> stream=Arrays.stream(people);
+//		stream.forEach(p -> System.out.println(p.getInfo()));
+//	another version using Arrays interface
+		Arrays.stream(people).forEach(p -> System.out.println(p.getInfo()));
 	}
-
 }
