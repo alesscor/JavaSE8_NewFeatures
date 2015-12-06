@@ -54,11 +54,11 @@ Java SE 8 New Features, lynda.com course with David Gassner:
         * Duration
     * Three more useful classes: local date, local time, local date time. They have consistency with instant and duration. In this new API everything is 1-based, i.e. 1 is January instead of February.
 
-    * There is a formatter class to provide custom work on the date and time values's format: DateTimeFormatter
+    * There is a formatter class to provide custom work on the date and time values's format: `DateTimeFormatter`
 
-```java
-        DateTimeFormatter df=DateTimeFormatter.ISO_DATE;
-        System.out.println("the current date: "+df.format(currentDate));
-```
+    ```java
+            DateTimeFormatter df=DateTimeFormatter.ISO_DATE;
+            System.out.println("the current date: "+df.format(currentDate));
+    ```
     * The formatters can be customized <3
 
