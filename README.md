@@ -60,5 +60,5 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             DateTimeFormatter df=DateTimeFormatter.ISO_DATE;
             System.out.println("the current date: "+df.format(currentDate));
     ```
-    * The formatters can be customized <3
+    * The formatters can be customized <3, it even allows extensions with locale values.
 
