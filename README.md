@@ -2,7 +2,7 @@
 
 Java SE 8 New Features, lynda.com course with David Gassner:
 
-* I'm using Eclipse Luna (4.4.1), already supporting Java SE 8, in need of adaptation look at (Aless, find the url!!!)
+* I'm using Eclipse Luna (4.4.1), already supporting Java SE 8, in need of adaptation look at https://wiki.eclipse.org/JDT/Eclipse_Java_8_Support_For_Kepler
 
 * The Lambda Project
 
@@ -21,5 +21,36 @@ Java SE 8 New Features, lynda.com course with David Gassner:
 `strings.forEach((str) -> System.out.println(str));`
     * Presenting the "predicate interface" which has a `test()` method that returns boolean. You won't need to write return keyword if use the single line implementation.
     * Review package `java.util.function`, because there is a lot of new useful interfaces there.
+
+
+* Method references:
+    * You are able to refer to methods of types by using the double colon operator. This allows you to pass them as arguments of other methods like `Collections.sort(people,Person::compareAges);` or which is the same: `people.sort(Person:: compareAges);`. You can call the double colon operator with the needed class or `this` as it is simpler.
+
+
+* Default and static methods:
+    * You are now able to implement methods into interface declarations, which allows you to implement less classes, for example some base classes won't be needed to implement "abstract" method as mere non-useful intermediary class, inheriting directly implemented methods from the interfaces as required <3.
+    * You are also able to add implemented static methods to interfaces.
+
+
+* Handling of collections:
+
+    * The stream API, which provides serial and parallel streams. It facilitates the implementation of arrays content by using interfaces for Stream and directly from the same containers, as Arrays.stream(anArray). Example: `Arrays.stream(people).forEach( p -> System.out.println( p.getInfo()));`
+    * It comes an example of processing elements from a list using parallel streams, yes it makes the process faster but you must take care of the order if processing, which can be random. Aggregate functions take advantage of the parallel processing: count, sum, average, min/max etc.
+        * For sum or special aggregate operations on the content, it comes a `mapToInt()` functional interface that has a method called sum to get the result. An example: `int sum= people.stream().mapToInt(p -> p.getAge()).sum();`
+        * It uses optional variables using `OptionalDouble`, which comes along the expression `isPresent` and `getAsDouble` to check if its value is presented and the respective value, very interesting cause I'd never use them before. It was used with the average of this example:
+```java
+                OptionalDouble avg=people .stream().mapToInt(p -> p.getAge()).average();
+                if(avg .isPresent()){
+                    System. out.println("The average of ages is: "+avg.getAsDouble());
+                }
+```
+
+
+* New API for date and time:
+    * Package java.time
+    * New classes are inmutable and thread-save
+        * Instant, comes with function to look at nanoseconds
+        * Duration
+    * Three more useful classes: local date, local time, local date time. They have consistency with instant and duration. In this new API everything is 1-based, i.e. 1 is January instead of February.
 
 
