@@ -60,5 +60,15 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             DateTimeFormatter df=DateTimeFormatter.ISO_DATE;
             System.out.println("the current date: "+df.format(currentDate));
     ```
-    * The formatters can be customized <3, it even allows extensions with locale values.
+    * The formatters can be customized <3, even more with using a completely custom formatter employing the «Builder Design Pattern» with DateTimeFormatterBuilder. The formatter is made from scratch, like in this example:
+```java
+            DateTimeFormatterBuilder builder=new DateTimeFormatterBuilder()
+                  .appendValue(ChronoField. MONTH_OF_YEAR)
+                  . appendLiteral("|")
+                  .appendValue(ChronoField. DAY_OF_MONTH)
+                  .appendLiteral( "|")
+                  .appendValue(ChronoField. YEAR);
+            DateTimeFormatter formatter=builder .toFormatter();
+
+```
 

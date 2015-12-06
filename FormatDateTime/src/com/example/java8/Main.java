@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
 import java.util.Locale;
 
 public class Main {
@@ -36,6 +38,18 @@ public class Main {
 		System.out.println("short version in French "+fr_short);
 		String fr_long=f_long.withLocale(Locale.FRANCE).format(currentDateTime);
 		System.out.println("long version in French "+fr_long);
+		
+		// Using a completely custom format, it uses the «Builder Design Pattern»
+		// the formatter is made from the scratch		
+		DateTimeFormatterBuilder builder=new DateTimeFormatterBuilder()
+			.appendValue(ChronoField.MONTH_OF_YEAR)
+			.appendLiteral("|")
+			.appendValue(ChronoField.DAY_OF_MONTH)
+			.appendLiteral("|")
+			.appendValue(ChronoField.YEAR);
+		DateTimeFormatter formatter=builder.toFormatter();
+		
+		System.out.println(" "+formatter.format(currentDateTime));
 	}
 
 }
