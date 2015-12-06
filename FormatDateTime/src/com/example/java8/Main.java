@@ -33,9 +33,9 @@ public class Main {
 		System.out.println("the date time in short format: "+f_short.format(currentDateTime));
 		
 		String fr_short=f_short.withLocale(Locale.FRANCE).format(currentDateTime);
-		System.out.println(fr_short);
+		System.out.println("short version in French "+fr_short);
 		String fr_long=f_long.withLocale(Locale.FRANCE).format(currentDateTime);
-		System.out.println(fr_long);
+		System.out.println("long version in French "+fr_long);
 	}
 
 }
