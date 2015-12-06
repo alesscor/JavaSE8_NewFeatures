@@ -17,8 +17,11 @@ public class Main {
 		ZonedDateTime gmt=ZonedDateTime.now(ZoneId.of("GMT+0"));
 		System.out.println("The GMT date time: "+gmt);
 
-		ZonedDateTime crct=ZonedDateTime.now(ZoneId.of("GMT-6"));
+		ZonedDateTime crct=ZonedDateTime.now(ZoneId.of("America/Costa_Rica"));
 		System.out.println("The Costa Rica date time: "+crct);
+
+		ZonedDateTime nyt=ZonedDateTime.now(ZoneId.of("America/New_York"));
+		System.out.println("The New York date time: "+nyt);
 	}
 
 }
