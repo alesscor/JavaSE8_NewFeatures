@@ -49,7 +49,7 @@ public class Main {
 			.appendValue(ChronoField.YEAR);
 		DateTimeFormatter formatter=builder.toFormatter();
 		
-		System.out.println(" "+formatter.format(currentDateTime));
+		System.out.println("the new formatter results: «"+formatter.format(currentDateTime)+"»");
 	}
 
 }
