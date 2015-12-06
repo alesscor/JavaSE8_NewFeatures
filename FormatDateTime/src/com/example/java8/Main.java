@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class Main {
 
@@ -30,6 +31,11 @@ public class Main {
 
 		DateTimeFormatter f_short=DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
 		System.out.println("the date time in short format: "+f_short.format(currentDateTime));
+		
+		String fr_short=f_short.withLocale(Locale.FRANCE).format(currentDateTime);
+		System.out.println(fr_short);
+		String fr_long=f_long.withLocale(Locale.FRANCE).format(currentDateTime);
+		System.out.println(fr_long);
 	}
 
 }
