@@ -5,6 +5,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Collection;
+import java.util.Set;
+import java.util.function.Predicate;
+
+import com.sun.net.httpserver.Filter;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class Main {
 
@@ -22,6 +28,15 @@ public class Main {
 
 		ZonedDateTime nyt=ZonedDateTime.now(ZoneId.of("America/New_York"));
 		System.out.println("The New York date time: "+nyt);
+		
+		Set<String> zones=ZoneId.getAvailableZoneIds();
+		zones.stream()
+		.filter(
+				(z)->z.toString().contains("Costa_Rica")
+					||z.toString().contains("Managua")
+					||z.toString().contains("Panama")
+					||z.toString().contains("Mexico"))
+		.forEach(zone -> System.out.println(zone));
 	}
 
 }
