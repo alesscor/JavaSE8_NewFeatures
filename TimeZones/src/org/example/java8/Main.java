@@ -35,7 +35,8 @@ public class Main {
 				(z)->z.toString().contains("Costa_Rica")
 					||z.toString().contains("Managua")
 					||z.toString().contains("Panama")
-					||z.toString().contains("Mexico"))
+					||z.toString().contains("Mexico")
+					||z.toString().contains("London"))
 		.forEach(zone -> System.out.println(zone));
 	}
 
