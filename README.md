@@ -61,7 +61,7 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             System.out.println("the current date: "+df.format(currentDate));
     ```
     * The formatters can be customized <3, even more with using a completely custom formatter employing the «Builder Design Pattern» with DateTimeFormatterBuilder. The formatter is made from scratch, like in this example:
-```java
+    ```java
             DateTimeFormatterBuilder builder=new DateTimeFormatterBuilder()
                   .appendValue(ChronoField. MONTH_OF_YEAR)
                   . appendLiteral("|")
@@ -70,7 +70,7 @@ Java SE 8 New Features, lynda.com course with David Gassner:
                   .appendValue(ChronoField. YEAR);
             DateTimeFormatter formatter=builder .toFormatter();
 
-```
+    ```
     * Time Zone handling with operations for date time values regarding different time zones. You are able to get the time zones set's values to review the ones you are interested to use in your applications.
 
 * JavaScript engine for Java
@@ -84,7 +84,7 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             * From java source code:
                 * You use a ScriptEngineManager instance and a ScriptEngine instance, the latest must evaluate a script.
                 * Example:
-```java
+    ```java
             ScriptEngineManager manager=new ScriptEngineManager();
             ScriptEngine engine=manager .getEngineByName("nashorn");
             String script="var welcome='Hello';"
@@ -97,6 +97,6 @@ Java SE 8 New Features, lynda.com course with David Gassner:
                   System. out.println("There was a JavaScript error" );
                    e.printStackTrace();
             }
-```
+    ```
     * But it's recommended to evaluate a JavaScript Script.
 
