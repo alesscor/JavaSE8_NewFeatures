@@ -71,7 +71,6 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             DateTimeFormatter formatter=builder .toFormatter();
 
 ```
-
     * Time Zone handling with operations for date time values regarding different time zones. You are able to get the time zones set's values to review the ones you are interested to use in your applications.
 
 * JavaScript engine for Java
