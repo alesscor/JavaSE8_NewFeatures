@@ -72,3 +72,32 @@ Java SE 8 New Features, lynda.com course with David Gassner:
 
 ```
 
+    * Time Zone handling with operations for date time values regarding different time zones. You are able to get the time zones set's values to review the ones you are interested to use in your applications.
+
+* JavaScript engine for Java
+    * Engine called Nashorn
+        * To code in JavaScript instead that in Java (replaces Rhino's engine)
+            * Able to use from the command line or in the java code files.
+            * From command line:
+                * You don't have access to documents so neither to their models, so there is no browser and then you don't have access to the window instance. BUT YOU ARE ABLE TO USE JAVA CLASSES!!!, and call Java platform objects methods.
+                * example: `services.explorecalifornia.org/rss/tours.php. Using var input=java.utils.Scanner(new java.net.URL("a working url").openStream()); input.useDelimiter("$");var contents=input.next();`
+                * And contents will have the xml page stored in the URL.
+            * From java source code:
+                * You use a ScriptEngineManager instance and a ScriptEngine instance, the latest must evaluate a script.
+                * Example:
+```java
+            ScriptEngineManager manager=new ScriptEngineManager();
+            ScriptEngine engine=manager .getEngineByName("nashorn");
+            String script="var welcome='Hello';"
+                        + "welcome+=' Alessandrín';"
+                        + "welcome;";
+             try {
+                  String result=(String)engine .eval(script);
+                  System. out.println(result );
+            } catch (ScriptException e ) {
+                  System. out.println("There was a JavaScript error" );
+                   e.printStackTrace();
+            }
+```
+    * But it's recommended to evaluate a JavaScript Script.
+
