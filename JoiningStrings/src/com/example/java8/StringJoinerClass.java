@@ -17,7 +17,7 @@ public class StringJoinerClass {
 		System.out.println(sj);
 		
 //		Merging StringJoiner instances
-		StringJoiner sj2=new StringJoiner(", ");
+		StringJoiner sj2=new StringJoiner(", ","|","|");
 		sj2.add("Shemp");
 		
 		sj.merge(sj2);
@@ -29,6 +29,11 @@ public class StringJoinerClass {
 		set.add("Oregon");
 		set.add("Washington");
 
+		StringJoiner sj3=new StringJoiner(" and ","|","|");
+		set.forEach(e -> sj3.add(e));
+		System.out.println(sj3);
+		
+		
 	}
 	
 }
