@@ -13,8 +13,15 @@ public class StringJoinerClass {
 		sj.setEmptyValue("No stooges yet");
 		System.out.println(sj);
 		
+		sj.add("Moe").add("Larry").add("Curly");
+		System.out.println(sj);
+		
 //		Merging StringJoiner instances
-
+		StringJoiner sj2=new StringJoiner(", ");
+		sj2.add("Shemp");
+		
+		sj.merge(sj2);
+		System.out.println(sj);
 		
 //		Working with collections
 		Set<String> set = new TreeSet<>();
