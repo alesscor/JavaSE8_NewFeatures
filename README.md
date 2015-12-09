@@ -99,8 +99,6 @@ Java SE 8 New Features, lynda.com course with David Gassner:
             }
     ```
     * But it's recommended to evaluate a JavaScript Script.
-
-
 * Other improvements in Java SE 8
     * Tools to join sequences, for example strings.
     * Availability of Predicates to use in streams, lovely application in searching within file streams.
@@ -114,7 +112,6 @@ Java SE 8 New Features, lynda.com course with David Gassner:
     * Improvements to the annotation model
         * Reduced redundancy
         * Ability to annotate types
-
     * JDBC release 4.2
         * Equivalence of classes Date, Time and Timestamp with java.time ones
     * Full details start at http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
