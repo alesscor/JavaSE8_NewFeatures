@@ -1,6 +1,6 @@
 # Java SE 8 New Features - David Gassner
 
-Java SE 8 New Features, lynda.com course with David Gassner:
+Java SE 8 New Features, lynda.com course with David Gassner, with exception of the material contained in `BasicTrivialities` directory:
 
 * I'm using Eclipse Luna (4.4.1), already supporting Java SE 8, in need of adaptation look at https://wiki.eclipse.org/JDT/Eclipse_Java_8_Support_For_Kepler
 
