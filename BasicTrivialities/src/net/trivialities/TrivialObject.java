@@ -27,6 +27,7 @@ public class TrivialObject {
 		result = prime * result + this.age;
 		result = prime * result
 				+ ((this.firstName == null) ? 0 : this.firstName.hashCode());
+		result = result + dob.hashCode();
 		return result;
 	}
 	@Override
