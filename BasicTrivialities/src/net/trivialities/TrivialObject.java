@@ -1,13 +1,25 @@
 package net.trivialities;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class TrivialObject {
+	final static private DateTimeFormatter dateFormatter=DateTimeFormatter.ISO_DATE;
 	private int age;
 	final private String firstName;
+	final private LocalDate dob;
 	
-	public TrivialObject(int anAge,String aName){
+	public TrivialObject(int anAge,String aName,LocalDate aDateOfBirth){
 		this.age=anAge;
 		this.firstName=aName;
+		this.dob=aDateOfBirth;
 	}
+	public TrivialObject(int anAge,String aName){
+		this(anAge,aName,LocalDate.now());
+	}
+	public TrivialObject(TrivialObject aTrivialObject){
+		this(aTrivialObject.age,aTrivialObject.firstName);
+	}	
 	@Override
 	final public int hashCode() {
 		final int prime = 31;
@@ -58,16 +70,18 @@ public class TrivialObject {
 	
 	@Override
 	public String toString() {
-		return "TrivialObject [age=" + this.age + ", "
-				+ (this.firstName != null ? "firstName=" + this.firstName : "")+" "+this.hashCode()+ "]";
+		return "TrivialObject [age:" + this.age + ", "
+				+ (this.firstName != null ? "firstName:" + this.firstName : "")+", dateOfBirth:"+dateFormatter.format(this.dob)+" "+this.hashCode()+ "]";
 	}
 
 	public static void main(String[] args) {
 		boolean carajada=args[0] instanceof Object;
 		TrivialObject nacho=new TrivialObject(1, "Ignacio");
 		TrivialObject meme=new TrivialObject(2, "Mauricio");
+		TrivialObject monchito=new TrivialObject(meme);
 		System.out.println("Yo soy "+nacho);
 		System.out.println("Yo soy "+meme);
+		System.out.println("Yo soy "+monchito+" (monchito)");
 		if(nacho.equals(meme)){
 			System.out.println("Son iguales los cabrones");
 		}else{
