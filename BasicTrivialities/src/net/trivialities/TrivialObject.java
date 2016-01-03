@@ -18,7 +18,7 @@ public class TrivialObject {
 		this(anAge,aName,LocalDate.now());
 	}
 	public TrivialObject(TrivialObject aTrivialObject){
-		this(aTrivialObject.age,aTrivialObject.firstName);
+		this(aTrivialObject.age,aTrivialObject.firstName,aTrivialObject.dob);
 	}	
 	@Override
 	final public int hashCode() {
@@ -50,7 +50,7 @@ public class TrivialObject {
 			if (other.firstName != null) {
 				return false;
 			}
-		} else if (!this.firstName.equals(other.firstName)) {
+		} else if (!this.firstName.equals(other.firstName) || !this.dob.equals(other.dob)) {
 			return false;
 		}
 		return true;
