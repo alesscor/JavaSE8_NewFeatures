@@ -1,11 +1,29 @@
 package net.trivialities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class TrivialObject {
-	final static private DateTimeFormatter dateFormatter=DateTimeFormatter.ISO_DATE;
+public class TrivialObject implements Serializable {
+	/**
+	 * Automatically generated serial version ID.
+	 */
+	private static final long serialVersionUID = -3235082009608563171L;
+	public static int getExistenceAmount(){
+		synchronized(TrivialObject.class){
+			return existenceAmount;
+		}
+	}
+	/**
+	 * Controls the amount of instances of this class that have existed ever.
+	 */
+	private static int existenceAmount;
+	/**
+	 * DateTimeFormatter of value ISO_DATE 
+	 */
+	private static final DateTimeFormatter dateFormatter=DateTimeFormatter.ISO_DATE;
 	private int age;
+	private int ID;
 	final private String firstName;
 	final private LocalDate dob;
 	
@@ -13,6 +31,10 @@ public class TrivialObject {
 		this.age=anAge;
 		this.firstName=aName;
 		this.dob=aDateOfBirth;
+		synchronized(TrivialObject.class){
+			TrivialObject.existenceAmount++;
+			this.ID=TrivialObject.existenceAmount;
+		}
 	}
 	public TrivialObject(int anAge,String aName){
 		this(anAge,aName,LocalDate.now());
@@ -46,6 +68,9 @@ public class TrivialObject {
 		if (this.age != other.age) {
 			return false;
 		}
+		if(this.ID!=other.ID){
+			return false;
+		}
 		if (this.firstName == null) {
 			if (other.firstName != null) {
 				return false;
@@ -71,8 +96,8 @@ public class TrivialObject {
 	
 	@Override
 	public String toString() {
-		return "TrivialObject [age:" + this.age + ", "
-				+ (this.firstName != null ? "firstName:" + this.firstName : "")+", dateOfBirth:"+dateFormatter.format(this.dob)+" "+this.hashCode()+ "]";
+		return "TrivialObject [ID:"+this.ID+", age:" + this.age + ", "
+				+ (this.firstName != null ? "firstName:" + this.firstName : "")+", dateOfBirth:"+dateFormatter.format(this.dob)+", hashCode:"+this.hashCode()+ "]";
 	}
 
 	public static void main(String[] args) {
@@ -98,5 +123,8 @@ public class TrivialObject {
 		}else{
 			System.out.println("This isn't an instance of Object");
 		}
+	}
+	final public int getID(){
+		return this.ID;
 	}
 }
