@@ -2,6 +2,12 @@ package net.trivialities;
 
 import static org.junit.Assert.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +58,7 @@ public class TestTrivialObject {
 	}
 	@Test
 	public void testConcurrency(){
-		ExecutorService executor = Executors.newFixedThreadPool(50);
+		ExecutorService executor = Executors.newFixedThreadPool(500);
 		int totalInhabitants=100000;
 		List<TrivialObject> aList=Collections.synchronizedList(new ArrayList<TrivialObject>(totalInhabitants)); // spends ~0.26s
 		// List<TrivialObject> aList=new CopyOnWriteArrayList<TrivialObject>(); // spends ~4.47s
@@ -77,6 +83,47 @@ public class TestTrivialObject {
 		assertTrue(aList.size()==totalInhabitants);
 		System.out.println("Number of inhabitants: "+aList.size());
 		System.out.println("The inhabitant at 714th position: "+aList.get(714));
+		System.out.println("The inhabitant at "+totalInhabitants+"th position: "+aList.get(totalInhabitants-1));
+		System.out.println("The ID counter "+TrivialObject.getExistenceAmount());
 	}
-
+	@Test
+	public void testStreaming(){
+		TrivialObject anObject=
+				new TrivialObject(0, "To transfer", LocalDate.of(1975, 5, 24));
+		TrivialObject anotherObject=null;
+		boolean everythingRight=false;
+		System.out.println("testStreaming: "+anObject);
+		try {
+			FileOutputStream fout = new FileOutputStream("trivialobject.storage");
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+			oos.writeObject(anObject);
+			oos.close();
+			everythingRight=true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(everythingRight){
+			try {
+				FileInputStream fin = new FileInputStream("trivialobject.storage");
+				ObjectInputStream ois = new ObjectInputStream(fin);
+				anotherObject=(TrivialObject)ois.readObject();
+				ois.close();
+				System.out.println("testStreaming: "+anotherObject);
+				everythingRight=true;
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		assertTrue(everythingRight);
+		assertTrue(anotherObject.equals(anObject));
+		assertFalse(anotherObject==anObject);
+		System.out.println("anObject: "+anObject.hashCode());
+		System.out.println("anotherObject: "+anotherObject.hashCode());
+	}
 }
