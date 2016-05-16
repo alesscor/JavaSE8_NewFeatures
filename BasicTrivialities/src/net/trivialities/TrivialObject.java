@@ -11,7 +11,7 @@ public class TrivialObject implements Serializable {
 	private static final long serialVersionUID = -3235082009608563171L;
 	public static int getExistenceAmount(){
 		synchronized(TrivialObject.class){
-			return existenceAmount;
+			return TrivialObject.existenceAmount;
 		}
 	}
 	/**
