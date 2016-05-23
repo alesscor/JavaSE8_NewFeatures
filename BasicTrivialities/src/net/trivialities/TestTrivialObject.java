@@ -12,11 +12,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import net.trivialities.TrivialObject;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -125,5 +127,18 @@ public class TestTrivialObject {
 		assertFalse(anotherObject==anObject);
 		System.out.println("anObject: "+anObject.hashCode());
 		System.out.println("anotherObject: "+anotherObject.hashCode());
+	}
+	@Test
+	public void testFeatures() {
+		TrivialObject anObject=new TrivialObject(0, "Alesso", LocalDate.of(1975, 5, 24));
+		anObject.addFeature("Análisis alto");
+		anObject.addFeature("Dopamina alta");
+		anObject.addMetric("Altura", 1.68);
+		anObject.addMetric("Peso", 75.9);
+		Set<String> features=anObject.getFeatures();
+		System.out.println(anObject);
+		features.add("Cosas muy locas");
+		System.out.println(anObject);
+		features.forEach(e->{System.out.println("i:" +e);});
 	}
 }

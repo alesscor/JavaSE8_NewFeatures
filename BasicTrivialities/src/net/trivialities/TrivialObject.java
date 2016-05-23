@@ -1,14 +1,19 @@
 package net.trivialities;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class TrivialObject implements Serializable {
 	/**
-	 * Automatically generated serial version ID.
+	 * Automatically generated serialVersionUID = -3235082009608563171L;
 	 */
 	private static final long serialVersionUID = -3235082009608563171L;
+
 	public static int getExistenceAmount(){
 		synchronized(TrivialObject.class){
 			return TrivialObject.existenceAmount;
@@ -24,6 +29,8 @@ public class TrivialObject implements Serializable {
 	private static final DateTimeFormatter dateFormatter=DateTimeFormatter.ISO_DATE;
 	private int age;
 	private int ID;
+	private Set<String> features;
+	private Set<Pair<String,Double>> metrics;
 	final private String firstName;
 	final private LocalDate dob;
 	
@@ -31,6 +38,8 @@ public class TrivialObject implements Serializable {
 		this.age=anAge;
 		this.firstName=aName;
 		this.dob=aDateOfBirth;
+		this.features=new HashSet<String>();
+		this.metrics=new HashSet<Pair<String,Double>>();
 		synchronized(TrivialObject.class){
 			TrivialObject.existenceAmount++;
 			this.ID=TrivialObject.existenceAmount;
@@ -41,7 +50,20 @@ public class TrivialObject implements Serializable {
 	}
 	public TrivialObject(TrivialObject aTrivialObject){
 		this(aTrivialObject.age,aTrivialObject.firstName,aTrivialObject.dob);
-	}	
+	}
+	public void addFeature(String aDefect){
+		this.features.add(aDefect);
+	}
+	public Set<String> getFeatures(){
+		return new HashSet<String>(this.features);
+	}
+	public void addMetric(String name,double measure){
+		this.metrics.add(new Pair<String, Double>(name,measure));
+	}
+	public Set<Pair<String, Double>> getMetrics(){
+		return new HashSet<Pair<String, Double>>(this.metrics);
+	}
+	
 	@Override
 	final public int hashCode() {
 		final int prime = 31;
@@ -96,8 +118,26 @@ public class TrivialObject implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "TrivialObject [ID:"+this.ID+", age:" + this.age + ", "
-				+ (this.firstName != null ? "firstName:" + this.firstName : "")+", dateOfBirth:"+dateFormatter.format(this.dob)+", hashCode:"+this.hashCode()+ "]";
+		String res="";
+		res="TrivialObject [ID:"+this.ID+", age:" + this.age + ", "
+				+ (this.firstName != null ? "firstName:" + this.firstName : "")+", dateOfBirth:"+dateFormatter.format(this.dob);
+		if(!this.features.isEmpty()){
+			res=res+", features: "+this.features.toString();
+		}
+		if(!this.metrics.isEmpty()){
+			res=res+", metrics: [";
+			Iterator<Pair<String,Double>> iterator=this.metrics.iterator();
+			while(iterator.hasNext()){
+				Pair<String,Double> e=iterator.next();
+				res=res+e.getLeft()+":"+e.getRight();
+				if(iterator.hasNext()){
+					res=res+", ";
+				}
+			}
+			res=res+"]";
+		}
+		res=res+", hashCode:"+this.hashCode()+ "]";
+		return res;
 	}
 
 	public static void main(String[] args) {
